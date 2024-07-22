@@ -56,3 +56,12 @@ test('verify getByTitle method in playwright', async ({ page }) => {
     await expect(ele3).toHaveAttribute('target', '_blank')
 })
 
+//getByTestId
+
+test('verify getByTestId method in playwright', async ({ page }) => {
+    await page.goto('https://www.atlassian.com/')
+    let searchIcon = await page.getByTestId('global-nav-search-icon')
+    searchIcon.first().click()
+    await expect(page.locator('#autocomplete-0-input')).toBeVisible()
+    await page.waitForTimeout(3000)
+})
