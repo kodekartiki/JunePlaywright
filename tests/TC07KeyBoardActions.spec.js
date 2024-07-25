@@ -1,0 +1,15 @@
+const { test, expect } = require('@playwright/test')
+
+test('verify keyboardactions in playwright', async ({ page }) => {
+    await page.keyboard.down('PageDown')
+    await page.goto('https://gotranscript.com/text-compare')
+    await page.locator('[name="text1"]').fill('i am learning playwright with javascript')
+    await page.keyboard.press('Control+A')
+    await page.keyboard.press('Control+C')
+    //await page.locator('[name="text2"]').click()
+    await page.keyboard.press('Tab')
+    await page.keyboard.press('Control+V')
+    await page.locator('[type="checkbox"]').check()
+    await page.locator('[id="recaptcha"]').click()
+    await page.waitForTimeout(5000)
+})
